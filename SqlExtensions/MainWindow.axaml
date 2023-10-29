@@ -1,0 +1,22 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="using:SqlExtensions"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="SqlExtensions.MainWindow"
+        Title="SqlExtensions"
+        Width="600" Height="400"
+        WindowStartupLocation="CenterScreen">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12" Width="300">
+        <Button Content="Create Database"
+                Command="{x:Static local:CreateDatabaseProgram.RunCommand}"
+                CommandParameter="CREATE TABLE IF NOT EXISTS bookmarks (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, url TEXT NOT NULL)" />
+        <Button Content="Create Bookmark"
+                Command="{x:Static local:CreateBookmarkProgram.RunCommand}"
+                CommandParameter="INSERT INTO bookmarks (name, url) VALUES ('Google', 'https://www.google.com')" />
+        <Button Content="Get Bookmarks"
+                Command="{x:Static local:GetBookmarkProgram.RunCommand}"
+                CommandParameter="SELECT * FROM bookmarks" />
+    </StackPanel>
+</Window>
